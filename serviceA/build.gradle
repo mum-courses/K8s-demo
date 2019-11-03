@@ -34,6 +34,13 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 
+	//expose repo as rest: https://docs.spring.io/spring-data/rest/docs/current/reference/html/#reference	
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	
+	// using in memory db for demo purposes 
+	runtimeOnly 'com.h2database:h2'
+
 	//kubernetes support : https://spring.io/projects/spring-cloud-kubernetes
 	implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-all'
 }

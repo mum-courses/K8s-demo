@@ -4,4 +4,6 @@ metadata:
   name: service-a-config
 data:
   someKey1: value1
-  nextService: service-b
+  #reference: https://cloud.spring.io/spring-cloud-static/spring-cloud-kubernetes/1.1.0.RC1/reference/html/#kubernetes-native-service-discovery
+
+  nextService: service-a.default.svc.cluster.local:8080
