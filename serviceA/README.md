@@ -33,19 +33,24 @@ This is a sample spring microservice which shows:
      ```console
      foo@bar:~$ curl <ENDPOINT HERE>/env 
      ```
+- You can get even access your DB server via:
+    ```console
+    foo@bar:~$ kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h service-a-db -ppassword
+    ```
 
 ### Guides used:
 
 * [https://spring.io/guides/gs/accessing-data-rest/]()
-
+* [https://kubernetes.io/docs/tasks/run-application/run-single-instance-stateful-application/]()
+* [https://spring.io/guides/gs/accessing-data-mysql/]()
 ### Reference Documentation
 For further reference, please consider the following sections:
 
+* [Kubernetes](https://kubernetes.io/docs/concepts/)
 * [Official Gradle documentation](https://docs.gradle.org)
 * [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.2.0.RELEASE/gradle-plugin/reference/html/)
 * [Spring Web](https://docs.spring.io/spring-boot/docs/2.2.0.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)
 * [Rest Repositories](https://docs.spring.io/spring-boot/docs/2.2.0.RELEASE/reference/htmlsingle/#howto-use-exposing-spring-data-repositories-rest-endpoint)
-* [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/2.2.0.RELEASE/reference/htmlsingle/#production-ready)
 
 
 The following guides illustrate how to use some features concretely:
@@ -54,7 +59,6 @@ The following guides illustrate how to use some features concretely:
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 * [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
 * [Accessing JPA Data with REST](https://spring.io/guides/gs/accessing-data-rest/)
-* [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
 
 ### Additional Links
 These additional references should also help you:

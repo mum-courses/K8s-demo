@@ -36,3 +36,15 @@ spec:
                 secretKeyRef:
                   name: service-a-secrets
                   key: service-api-key
+            #MYSQL
+            - name: MYSQL_HOST
+              value: service-a-db
+
+            - name: MYSQL_USER
+              value: root
+
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: service-a-secrets
+                  key: mysql-root-password

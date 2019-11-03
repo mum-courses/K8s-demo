@@ -9,6 +9,8 @@ k8sService=k8s-service.yaml
 k8sConfigMap=k8s-config-map.yaml
 k8sSecrets=k8s-secrets.yaml
 k8sRole=k8s-role.yaml
+k8sPersistenceVol=k8s-persistence-volumn.yaml
+k8sPersistenceDB=k8s-persistence-database.yaml
 
 
 #===================  gradle  ===========================
@@ -60,9 +62,6 @@ k8s-use-minikube-docker:
 
 k8s-deployment-create: k8s-use-minikube-docker  docker-push
 	kubectl apply -f ${k8sDeployment}
-
-k8s-deployment-replace:
-	kubectl replace -f ${k8sDeployment}
 k8s-deployment-delete:
 	kubectl delete -f ${k8sDeployment}
 
@@ -94,9 +93,29 @@ k8s-role-create:
 k8s-role-delete:
 	kubectl delete -f ${k8sRole}
 
-k8s-all-create: k8s-configmap-create k8s-secrets-create k8s-role-create k8s-deployment-create k8s-service-create k8s-service-url
+
+k8s-persistence-create:
+	kubectl apply -f ${k8sPersistenceVol}
+	kubectl apply -f ${k8sPersistenceDB}
+k8s-persistence-delete:
+	kubectl delete -f ${k8sPersistenceDB}
+	kubectl delete -f ${k8sPersistenceVol}
+
+
+k8s-info:
+	kubectl cluster-info
+	kubectl get pv
+	kubectl get pvc
+	kubectl get secrets
+	kubectl get configmaps
+	kubectl get services
+	kubectl get pods
+
+
+
+k8s-all-create: k8s-configmap-create k8s-secrets-create k8s-role-create k8s-persistence-create k8s-deployment-create k8s-service-create k8s-service-url
 	echo "Done"
-k8s-all-delete: k8s-configmap-delete k8s-secrets-delete k8s-deployment-delete k8s-service-delete
+k8s-all-delete: k8s-configmap-delete k8s-secrets-delete k8s-persistence-delete k8s-deployment-delete k8s-service-delete
 	echo "Done"
 
 

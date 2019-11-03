@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-a-db
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: service-a-db
+  clusterIP: None
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-a-db
+spec:
+  selector:
+    matchLabels:
+      app: service-a-db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: service-a-db
+    spec:
+      containers:
+        - image: mysql:5.6
+          name: service-a-db
+          env:
+            # Use secret in real usage
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: service-a-secrets
+                  key: mysql-root-password
+          ports:
+            - containerPort: 3306
+              name: service-a-db
+          volumeMounts:
+            - name: service-a-db-persistent-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: service-a-db-persistent-storage
+          persistentVolumeClaim:
+            claimName: service-a-pv-claim

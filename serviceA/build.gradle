@@ -39,7 +39,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	
 	// using in memory db for demo purposes 
-	runtimeOnly 'com.h2database:h2'
+	//runtimeOnly 'com.h2database:h2'
+
+	//use mysql
+	runtimeOnly 'mysql:mysql-connector-java'
 
 	//kubernetes support : https://spring.io/projects/spring-cloud-kubernetes
 	implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-all'
