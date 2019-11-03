@@ -6,6 +6,11 @@ Demo showing using Spring cloud Framework with Kubernetes.
 
 install minikube
 install kubectl 
+openJDK-11
+
+#hints:
+allocate more resources to your cluster : minikube start --cpus=4  --memory='4000mb'
+
 
 An account on: https://hub.docker.com
 
