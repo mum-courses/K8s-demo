@@ -1,0 +1,7 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: service-a-config
+data:
+  someKey1: value1
+  nextService: service-b

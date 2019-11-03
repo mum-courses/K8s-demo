@@ -33,6 +33,9 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+
+	//kubernetes support : https://spring.io/projects/spring-cloud-kubernetes
+	implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-all'
 }
 
 dependencyManagement {

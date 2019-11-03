@@ -19,3 +19,5 @@ services are exposed as NodePort
 check services : kubectl get services
 get IP of the Node : kubectl cluster-info
 Then call your service <NODE IP>:<NODE PORT>
+
+to store secrets, pass them first thourgh base64: check  https://kubernetes.io/docs/concepts/configuration/secret/

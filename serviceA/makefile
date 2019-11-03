@@ -5,6 +5,9 @@ image=${docker-user}/service-a
 containerID := $(shell docker ps -a -q --filter ancestor=${image})
 
 k8sDeployment=service-a-deployment
+k8sService=service-a
+k8sConfigMap=service-a-config
+k8sSecrets=service-a-secrets
 
 
 #===================  gradle  ===========================
@@ -56,17 +59,36 @@ k8s-use-minikube-docker:
 k8s-deployment-create: k8s-use-minikube-docker docker-push
 	kubectl apply -f deployment-service-a.yaml
 
+k8s-deployment-apply:
+	kubectl apply -f deployment-service-a.yaml
+
 k8s-deployment-delete:
 	kubectl delete deployment ${k8sDeployment}
+
 
 k8s-service-create:
 	kubectl apply -f service-service-a.yaml
 
 k8s-service-delete:
-	kubectl delete svc service-a
+	kubectl delete svc ${k8sService}
 
-k8s-service:
-	kubectl describe services/${k8sDeployment}
+k8s-service-url:
+	minikube service ${k8sService} --url
+
+
+
+k8s-configmap-create:
+	kubectl apply  -f config-map-service-a.yaml
+
+k8s-configmap-delete:
+	kubectl delete configmap ${k8sConfigMap}
+
+
+k8s-secrets-create:
+	kubectl apply  -f secrets-service-a.yaml
+
+k8s-secrets-delete:
+	kubectl delete secrets ${k8sSecrets}
 
 
 

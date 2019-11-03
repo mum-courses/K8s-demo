@@ -10,5 +10,7 @@
     <orderEntry type="library" name="Gradle: org.springframework:spring-web:5.2.0.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-autoconfigure:2.2.0.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot:2.2.0.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.cloud:spring-cloud-commons:2.2.0.RC1" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-beans:5.2.0.RELEASE" level="project" />
   </component>
 </module>
