@@ -4,10 +4,10 @@ image=${docker-user}/service-a
 
 containerID := $(shell docker ps -a -q --filter ancestor=${image})
 
-k8sDeployment=service-a-deployment
-k8sService=service-a
-k8sConfigMap=service-a-config
-k8sSecrets=service-a-secrets
+k8sDeployment=k8s-deployment.yaml
+k8sService=k8s-service.yaml
+k8sConfigMap=k8s-config-map.yaml
+k8sSecrets=k8s-secrets.yaml
 
 
 #===================  gradle  ===========================
@@ -54,41 +54,46 @@ docker-prune:
 
 #Use Docker of your host to communicate with the Docker daemon inside the Minikube VM:
 k8s-use-minikube-docker:
-	eval $(minikube docker-env)
+	@eval $$(minikube docker-env) 
+	echo "$$(minikube docker-env)"
 
-k8s-deployment-create: k8s-use-minikube-docker docker-push
-	kubectl apply -f deployment-service-a.yaml
+k8s-deployment-create: k8s-use-minikube-docker 
+	kubectl apply -f ${k8sDeployment}
 
-k8s-deployment-apply:
-	kubectl apply -f deployment-service-a.yaml
-
+k8s-deployment-replace:
+	kubectl replace -f ${k8sDeployment}
 k8s-deployment-delete:
-	kubectl delete deployment ${k8sDeployment}
+	kubectl delete -f ${k8sDeployment}
 
 
 k8s-service-create:
-	kubectl apply -f service-service-a.yaml
-
+	kubectl apply -f ${k8sService}
 k8s-service-delete:
-	kubectl delete svc ${k8sService}
+	kubectl delete -f ${k8sService}
 
 k8s-service-url:
-	minikube service ${k8sService} --url
-
+	$(eval k8s-service-name=$(shell sh -c "kubectl get -f ${k8sService} | grep -v NAME" | awk '{print $$1}'))
+	minikube service ${k8s-service-name} --url
 
 
 k8s-configmap-create:
-	kubectl apply  -f config-map-service-a.yaml
-
+	kubectl apply  -f ${k8sConfigMap}
 k8s-configmap-delete:
-	kubectl delete configmap ${k8sConfigMap}
+	kubectl delete -f ${k8sConfigMap}
 
 
 k8s-secrets-create:
-	kubectl apply  -f secrets-service-a.yaml
-
+	kubectl apply  -f ${k8sSecrets}
 k8s-secrets-delete:
-	kubectl delete secrets ${k8sSecrets}
+	kubectl delete -f ${k8sSecrets}
+
+k8s-all-create: k8s-configmap-create k8s-secrets-create k8s-deployment-create k8s-service-create k8s-service-url
+	echo "Done"
+k8s-all-delete: k8s-configmap-delete k8s-secrets-delete k8s-deployment-delete k8s-service-delete
+	echo "Done"
+
+
+
 
 
 
