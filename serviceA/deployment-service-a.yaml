@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-a-deployment
+  labels:
+    app: service-a
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: service-a
+  template:
+    metadata:
+      labels:
+        app: service-a
+
+    spec:
+      containers:
+        - name: service-a
+          image: mumcourses/service-a:latest
+          ports:
+            - containerPort: 8080
