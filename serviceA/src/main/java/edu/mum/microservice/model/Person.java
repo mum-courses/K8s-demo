@@ -1,4 +1,4 @@
-package edu.mum.ServiceA.model;
+package edu.mum.microservice.model;
 
 import lombok.Data;
 

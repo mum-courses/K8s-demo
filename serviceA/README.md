@@ -9,6 +9,24 @@ This is a sample spring microservice which shows:
 # Install
 
 - First ensure you have MiniKube and kubectl running
+
+# Scaffolding 
+- Service configuration is template based
+- Ensure shell files have execute permission
+    ```console
+    foo@bar:~$ chmod +x ./generate-service.sh  && chmod +x templates/process.sh  
+    ``` 
+- Edit generate-service.sh. Modify your service name and docker user
+    ```console
+    foo@bar:~$ vi generate-service.sh
+    ``` 
+ - Generate service 
+    ```console
+    foo@bar:~$ ./generate-service.sh
+    ``` 
+
+# Usage
+
 - In your terminal
 
     ```console
@@ -35,7 +53,7 @@ This is a sample spring microservice which shows:
      ```
 - You can get even access your DB server via:
     ```console
-    foo@bar:~$ kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h service-a-db -ppassword
+    foo@bar:~$ kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h <SERVICE NAME> -ppassword
     ```
 
 ### Guides used:

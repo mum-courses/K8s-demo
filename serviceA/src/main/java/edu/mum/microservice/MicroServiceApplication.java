@@ -1,6 +1,5 @@
-package edu.mum.ServiceA;
+package edu.mum.microservice;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
@@ -8,11 +7,11 @@ import static org.springframework.boot.SpringApplication.*;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class ServiceAApplication {
+public class MicroServiceApplication {
 
 	public static void main(String[] args) {
 
-		run(ServiceAApplication.class, args);
+		run(MicroServiceApplication.class, args);
 	}
 
 }

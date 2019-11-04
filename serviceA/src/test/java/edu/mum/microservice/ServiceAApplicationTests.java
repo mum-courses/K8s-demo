@@ -1,4 +1,4 @@
-package edu.mum.ServiceA;
+package edu.mum.microservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
