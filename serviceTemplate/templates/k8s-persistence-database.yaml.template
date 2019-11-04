@@ -4,7 +4,7 @@ metadata:
   name: ${serviceName}-db
 spec:
   ports:
-    - port: 3306
+    - port: ${serviceDBPort}
   selector:
     app: ${serviceName}-db
   clusterIP: None

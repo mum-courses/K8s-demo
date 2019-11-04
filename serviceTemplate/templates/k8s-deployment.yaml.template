@@ -42,6 +42,8 @@ spec:
 
             - name: MYSQL_USER
               value: root
+            - name: MYSQL_PORT
+              value: "${serviceDBPort}"
 
             - name: MYSQL_PASSWORD
               valueFrom:

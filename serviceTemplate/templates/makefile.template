@@ -2,15 +2,6 @@
 
 containerID := $(shell docker ps -a -q --filter ancestor=${serviceImage})
 
-k8sDeployment=k8s-deployment.yaml
-k8sService=k8s-service.yaml
-k8sConfigMap=k8s-config-map.yaml
-k8sSecrets=k8s-secrets.yaml
-k8sRole=k8s-role.yaml
-k8sPersistenceVol=k8s-persistence-volumn.yaml
-k8sPersistenceDB=k8s-persistence-database.yaml
-
-
 #===================  gradle  ===========================
 clean:
 	./gradlew clean
@@ -95,6 +86,9 @@ k8s-role-delete:
 k8s-persistence-create:
 	kubectl apply -f ${k8sPersistenceVol}
 	kubectl apply -f ${k8sPersistenceDB}
+	echo "create initial db, run this when DB service"
+	echo "kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h ${serviceName}-db -ppassword -e 'create database db_example;'"
+
 k8s-persistence-delete:
 	kubectl delete -f ${k8sPersistenceDB}
 	kubectl delete -f ${k8sPersistenceVol}

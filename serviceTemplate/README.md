@@ -16,14 +16,11 @@ This is a sample spring microservice which shows:
     ```console
     foo@bar:~$ chmod +x ./generate-service.sh  && chmod +x templates/process.sh  
     ``` 
-- Edit generate-service.sh. Modify your service name and docker user
-    ```console
-    foo@bar:~$ vi generate-service.sh
-    ``` 
- - Generate service 
+- Generate service 
     ```console
     foo@bar:~$ ./generate-service.sh
     ``` 
+
 
 # Usage
 

@@ -8,5 +8,5 @@ spec:
     app: ${serviceName}
   ports:
     - protocol: TCP
-      port: 8080
+      port: ${servicePort}
       targetPort: 8080
