@@ -4,9 +4,12 @@ metadata:
   name: ${serviceName}-db
 spec:
   ports:
-    - port: ${serviceDBPort}
+    - protocol: TCP
+      port: ${serviceDBPort}
+      targetPort: ${serviceName}-db-port
   selector:
     app: ${serviceName}-db
+    tier: db
   clusterIP: None
 ---
 apiVersion: apps/v1
@@ -17,12 +20,14 @@ spec:
   selector:
     matchLabels:
       app: ${serviceName}-db
+      tier: db
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app: ${serviceName}-db
+        tier: db
     spec:
       containers:
         - image: mysql:5.6
@@ -36,7 +41,7 @@ spec:
                   key: mysql-root-password
           ports:
             - containerPort: 3306
-              name: ${serviceName}-db
+              name: ${serviceName}-db-port
           volumeMounts:
             - name: ${serviceName}-db-persistent-storage
               mountPath: /var/lib/mysql

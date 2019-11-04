@@ -9,7 +9,13 @@ Demo showing using Spring cloud Framework with Kubernetes.
 - openJDK-11
 
 ## hints:
-allocate more resources to your cluster : minikube start --cpus=4  --memory='4000mb'
+- allocate more resources to your cluster : minikube start --cpus=4  --memory='4000mb'
+- Disableing swapp might improve speed
+	```console
+	    foo@bar:~$ minikube ssh
+		$ sudo swapoff -a
+	``` 
+
 
 
 An account on: https://hub.docker.com
