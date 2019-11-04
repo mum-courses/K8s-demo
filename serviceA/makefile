@@ -110,6 +110,7 @@ k8s-info:
 	kubectl get configmaps
 	kubectl get services
 	kubectl get pods
+	echo "You can also check DB via:\n kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h service-a-db -ppassword "
 
 
 
