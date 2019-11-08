@@ -40,6 +40,12 @@ spec:
             - name: MYSQL_HOST
               value: ${serviceName}-db
 
+            - name: MYSQL_PORT
+              value: 3306
+
+            - name: MYSQL_SCHEMA
+              value: db_example   
+
             - name: MYSQL_USER
               value: root
             - name: MYSQL_PORT
