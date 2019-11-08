@@ -8,7 +8,7 @@ clean:
 build: clean
 	./gradlew  bootJar
 run-local: build
-	java -jar build/libs/ServiceA-*.jar
+	java -jar build/libs/${serviceName}*.jar
 
 #===================  docker  ===========================
 docker-build: build
