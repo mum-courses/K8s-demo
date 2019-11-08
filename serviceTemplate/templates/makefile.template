@@ -25,6 +25,9 @@ docker-login:
 docker-push: docker-login docker-build
 	docker push ${serviceImage}
 
+docker-pull: docker-login
+	docker pull ${serviceImage}
+
 docker-bash:
 	docker exec -ti ${serviceImage} /bin/sh
 
@@ -49,7 +52,7 @@ k8s-use-minikube-docker:
 	@eval $$(minikube docker-env) 
 	echo "$$(minikube docker-env)"
 
-k8s-deployment-create: k8s-use-minikube-docker  docker-push
+k8s-deployment-create: k8s-use-minikube-docker  docker-push docker-pull
 	kubectl apply -f ${k8sDeployment}
 k8s-deployment-delete:
 	kubectl delete -f ${k8sDeployment}
