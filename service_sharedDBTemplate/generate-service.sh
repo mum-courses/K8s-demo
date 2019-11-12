@@ -7,7 +7,9 @@
 echo "Hey, let's create a new service!"
 
 echo "serviceName?"
-read name
+read oldname
+
+name=$(echo "oldname" | awk '{print tolower($0)}')
 
 echo "Your docker hub user (or other repo) ?"
 read hub

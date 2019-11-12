@@ -3,7 +3,7 @@ Demo showing using Spring cloud Framework with Kubernetes.
 
 
 ## You need 
-
+- install zsh 
 - install minikube
 - install kubectl 
 - openJDK-11
@@ -15,7 +15,11 @@ Demo showing using Spring cloud Framework with Kubernetes.
 	    foo@bar:~$ minikube ssh
 		$ sudo swapoff -a
 	``` 
-
+## steps 
+1- run createService.sh to create the new service folder with the correct template 
+2- run generateservice.sh to populate the template with the needed information
+3- start coding :D 
+4- hopfully your code will work :P 
 
 
 An account on: https://hub.docker.com
